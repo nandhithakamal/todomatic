@@ -1,44 +1,25 @@
 import Todo from "./components/Todo";
+import Form from "./components/Form";
+import FilterTasksButton from "./components/FilterTasksButton";
+
+
 
 function App(props) {
+  function addTask(task) {
+    alert("Task added " + task);
+  }
   console.log(props);
-  const taskList = props.tasks.map(task => <Todo task={task.task} id={task.id} isComplete={task.isComplete} key={task.id}/>)
+  const taskList = props.tasks.map(task => <Todo task={task.task} id={task.id} isComplete={task.isComplete} key={task.id} />)
+  console.log(taskList);
   return (
     <div className="todoapp stack-large">
       <h1> TodoMatic </h1>
-      <form>
-        <h2 className="label-wrapper">
-          <label htmlFor="new-todo-input" className="label__lg">
-            What do you need to do?
-          </label>
-        </h2>
-        <input
-          type="text"
-          id="new-todo-input"
-          className="input input__lg"
-          name="text"
-          autoComplete="off"
-        />
-        <button type="submit" className="btn btn__primary btn__lg">
-          Add
-        </button>
-      </form>
+      <Form addTask={addTask} />
+
       <div className="filters btn-group stack-exception">
-        <button type="button" className="btn toggle-btn" aria-pressed="true">
-          <span className="visually-hidden">Show </span>
-          <span>all</span>
-          <span className="visually-hidden"> tasks</span>
-        </button>
-        <button type="button" className="btn toggle-btn" aria-pressed="true">
-          <span className="visually-hidden">Show </span>
-          <span>active</span>
-          <span className="visually-hidden"> tasks</span>
-        </button>
-        <button type="button" className="btn toggle-btn" aria-pressed="true">
-          <span className="visually-hidden">Show </span>
-          <span>completed</span>
-          <span className="visually-hidden"> tasks</span>
-        </button>
+        <FilterTasksButton />
+        <FilterTasksButton />
+        <FilterTasksButton />
       </div>
       <h2 id="list-heading">
         3 tasks remaining
