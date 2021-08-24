@@ -5,10 +5,10 @@ export default function Form(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(taskName);
         props.addTask(taskName);
         setTaskName("");
     }
+    
     function handleChange(e){
         setTaskName(e.target.value)
     }
