@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function FormData(props) {
+export default function Form(props) {
+    const [taskName, setTaskName] = useState("");
+
     function handleSubmit(e) {
         e.preventDefault();
-        props.addTask("task submitted" + e);
+        console.log(taskName);
+        props.addTask(taskName);
+        setTaskName("");
+    }
+    function handleChange(e){
+        setTaskName(e.target.value)
     }
 
     return(
@@ -19,6 +26,8 @@ export default function FormData(props) {
                 className="input input__lg"
                 name="text"
                 autoComplete="off"
+                value={taskName}
+                onChange={handleChange}
             />
             <button type="submit" className="btn btn__primary btn__lg" >
                 Add

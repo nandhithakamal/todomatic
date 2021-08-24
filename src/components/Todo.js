@@ -7,7 +7,7 @@ export default function Todo(props) {
             <div className="c-cb">
                 <input id={props.id} type="checkbox" defaultChecked={props.isComplete}/>
                 <label className="todo-label" htmlFor="todo-0">
-                    {props.task}
+                    {props.name}
                 </label>
             </div>
             <div className="btn-group">
